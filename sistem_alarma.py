@@ -7,7 +7,7 @@ MQTT_BROKER = "localhost"
 MQTT_PORT = 1883
 MQTT_TOPIC = "home/alarm"
 
-client = mqtt.Client()
+client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 client.connect(MQTT_BROKER, MQTT_PORT, 60)
 
 net = cv2.dnn.readNetFromONNX("camera-ai/yolov8n.onnx")
