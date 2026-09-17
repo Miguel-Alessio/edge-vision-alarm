@@ -48,12 +48,4 @@ chafa detectie_persoana.jpg
    - Saved `detectie_persoana.jpg` with a green bounding box around the detected person.
 3. When no person was present, it published `NONE`.
 
----
-
-## Live MQTT Monitoring (Optional)
-
-Open a second terminal window and run:
-
-```bash
-docker exec -it mosquitto-standalone mosquitto_sub -t "home/alarm"
 ```
