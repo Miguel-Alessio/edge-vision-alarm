@@ -47,5 +47,3 @@ chafa detectie_persoana.jpg
    - Published `DETECTAT` to the MQTT topic `home/alarm`.
    - Saved `detectie_persoana.jpg` with a green bounding box around the detected person.
 3. When no person was present, it published `NONE`.
-
-```
