@@ -15,7 +15,7 @@ Smart security alarm built with Raspberry Pi 3, YOLOv8 object detection, and MQT
 
 1. Clone the repository:
 ```bash
-git clone [https://github.com/Miguel-Alessio/edge-vision-alarm.git](https://github.com/Miguel-Alessio/edge-vision-alarm.git)
+git clone https://github.com/Miguel-Alessio/edge-vision-alarm.git
 cd edge-vision-alarm
 ```
 
