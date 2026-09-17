@@ -31,5 +31,5 @@ pip install -r requirements.txt --break-system-packages
 
 4. Run the alarm:
 ```bash
-python sistem_alarma.py
+python3 sistem_alarma.py
 ```
