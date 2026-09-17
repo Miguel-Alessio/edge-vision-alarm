@@ -1,20 +1,35 @@
 # Edge Vision Alarm System
 
-IoT-based security alarm pipeline performing object detection on an edge device (Raspberry Pi 3) and triggering real-time alerts via MQTT.
+Smart security alarm built with Raspberry Pi 3, YOLOv8 object detection, and MQTT messaging.
 
-## Features
-- Lightweight inference using YOLOv8n (ONNX format) executed through OpenCV DNN.
-- MQTT publish-subscribe architecture with Eclipse Mosquitto broker.
-- Bounding box rendering and alert logging on positive detections.
+## How It Works
 
-## Setup
+1. Captures video frames from a camera or test video file.
+2. Detects people using YOLOv8n via OpenCV DNN.
+3. Publishes MQTT messages to topic `home/alarm`:
+   - `DETECTAT` if a person is found.
+   - `NONE` if no person is in frame.
+4. Saves `detectie_persoana.jpg` with bounding boxes on successful detections.
 
-1. Start the MQTT broker:
-	bash
-	docker compose up -d
-2. Install dependencies:
-	bash
-	pip install -r requirements.txt --break-system-packages
-3. Run the alarm system:
-	bash
-	python sistem_alarma.py
+## Setup & Run
+
+1. Clone the repository:
+```bash
+git clone [https://github.com/Miguel-Alessio/edge-vision-alarm.git](https://github.com/Miguel-Alessio/edge-vision-alarm.git)
+cd edge-vision-alarm
+```
+
+2. Start the MQTT broker:
+```bash
+docker compose up -d
+```
+
+3. Install requirements:
+```bash
+pip install -r requirements.txt --break-system-packages
+```
+
+4. Run the alarm:
+```bash
+python sistem_alarma.py
+```
