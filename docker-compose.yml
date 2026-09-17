@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto-standalone
+    ports:
+      - "1883:1883"
+    restart: unless-stopped
