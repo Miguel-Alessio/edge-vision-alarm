@@ -21,11 +21,6 @@ pip install -r requirements.txt --break-system-packages
 python3 sistem_alarma.py
 ```
 
-Wait until you see the following line printed in the terminal:
-```text
-Detectat & Salvat imaginea detectie_persoana.jpg
-```
-
 Press **`Ctrl + C`** to stop the script, then view the detected person directly in your terminal:
 
 ```bash
