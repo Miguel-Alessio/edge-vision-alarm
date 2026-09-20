@@ -3,6 +3,7 @@ import cv2
 import numpy as np
 import paho.mqtt.client as mqtt
 import math
+import time
 
 MQTT_BROKER = "localhost"
 MQTT_PORT = 1883
@@ -32,6 +33,9 @@ total_oameni = 0
 max_in_val = 0
 cadre_goale_consecutive = 0
 PRAG_CADRE_GOALE = 5
+
+last_persoane = -1
+last_total = -1
 
 def format_letterbox(img):
     h, w = img.shape[:2]
@@ -93,6 +97,7 @@ try:
                 max_in_val = 0
 
         total_afisat = total_oameni + max_in_val
+        stare_schimbata = (persoane_in_cadru != last_persoane) or (total_afisat != last_total)
 
         if persoane_in_cadru > 0:
             saved_frame = frame.copy()
@@ -115,10 +120,19 @@ try:
             output_path = os.path.abspath("detectie_persoana.jpg")
             cv2.imwrite(output_path, saved_frame)
             client.publish(MQTT_TOPIC, "DETECTAT")
-            print(f"In cadru: {persoane_in_cadru} | Total estimat: {total_afisat}")
+            
+            if stare_schimbata:
+                print(f"In cadru: {persoane_in_cadru} | Total estimat: {total_afisat}")
         else:
             client.publish(MQTT_TOPIC, "NONE")
-            print(f"Trimis pe MQTT: NONE | Total contorizati: {total_afisat}")
+            if stare_schimbata:
+                print(f"Trimis pe MQTT: NONE | Total contorizati: {total_afisat}")
+
+        if stare_schimbata:
+            last_persoane = persoane_in_cadru
+            last_total = total_afisat
+
+        time.sleep(0.1)
 
 except KeyboardInterrupt:
     pass
