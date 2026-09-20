@@ -7,23 +7,17 @@ Smart security alarm built with Raspberry Pi 3, YOLOv8 object detection, and MQT
 Run these commands in order. Everything needed (including packages and a sample test video with people) is downloaded automatically:
 
 ```bash
-# 1. Clone the repository and enter the project folder
 git clone https://github.com/Miguel-Alessio/edge-vision-alarm.git
 cd edge-vision-alarm
 
-# 2. Download sample test video
 curl -L -o test.mp4 "https://github.com/intel-iot-devkit/sample-videos/raw/master/people-detection.mp4"
 
-# 3. Install the terminal image viewer
 sudo apt update && sudo apt install -y chafa
 
-# 4. Start the MQTT broker
 docker compose up -d
 
-# 5. Install Python dependencies
 pip install -r requirements.txt --break-system-packages
 
-# 6. Run the detection system
 python3 sistem_alarma.py
 ```
 
